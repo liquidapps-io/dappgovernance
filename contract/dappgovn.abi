@@ -1,0 +1,552 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "cleanup",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "createprop",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "title",
+                    "type": "string"
+                },
+                {
+                    "name": "summary",
+                    "type": "string"
+                },
+                {
+                    "name": "ipfsurl",
+                    "type": "string"
+                },
+                {
+                    "name": "max_reward",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "currency_stats",
+            "base": "",
+            "fields": [
+                {
+                    "name": "supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "max_supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "issuer",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "deposits",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "feecheck",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "feeamt",
+                    "type": "asset"
+                },
+                {
+                    "name": "message",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "implement",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "lock",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "prop_struct",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "proposer",
+                    "type": "name"
+                },
+                {
+                    "name": "title",
+                    "type": "string"
+                },
+                {
+                    "name": "summary",
+                    "type": "string"
+                },
+                {
+                    "name": "ipfsurl",
+                    "type": "string"
+                },
+                {
+                    "name": "created_at",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "status",
+                    "type": "string"
+                },
+                {
+                    "name": "approved_at",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "accepted_at",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "rejected_at",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "vote_active",
+                    "type": "bool"
+                },
+                {
+                    "name": "isapproved",
+                    "type": "bool"
+                },
+                {
+                    "name": "max_reward",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "refund",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "setconfig",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposer_fee",
+                    "type": "asset"
+                },
+                {
+                    "name": "accept_vote_per",
+                    "type": "uint32"
+                },
+                {
+                    "name": "approved_vote_per",
+                    "type": "uint32"
+                },
+                {
+                    "name": "tokensymbol",
+                    "type": "symbol"
+                },
+                {
+                    "name": "tokencontract",
+                    "type": "name"
+                },
+                {
+                    "name": "timelock_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "approval_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "accepted_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "unlock_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "feecontract",
+                    "type": "name"
+                },
+                {
+                    "name": "userreward",
+                    "type": "asset"
+                },
+                {
+                    "name": "rewardacc",
+                    "type": "name"
+                },
+                {
+                    "name": "minlockamt",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "settings",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposer_fee",
+                    "type": "asset"
+                },
+                {
+                    "name": "accept_vote_per",
+                    "type": "uint32"
+                },
+                {
+                    "name": "approved_vote_per",
+                    "type": "uint32"
+                },
+                {
+                    "name": "tokensymbol",
+                    "type": "symbol"
+                },
+                {
+                    "name": "tokencontract",
+                    "type": "name"
+                },
+                {
+                    "name": "feescontract",
+                    "type": "name"
+                },
+                {
+                    "name": "timelock_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "approval_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "accepted_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "unlock_hours",
+                    "type": "uint32"
+                },
+                {
+                    "name": "userreward",
+                    "type": "asset"
+                },
+                {
+                    "name": "rewardacc",
+                    "type": "name"
+                },
+                {
+                    "name": "minlockamt",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "staking",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "totalstake",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint8"
+                },
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "unlock",
+            "base": "",
+            "fields": [
+                {
+                    "name": "receiver",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "unstaking",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "unlocked",
+                    "type": "asset"
+                },
+                {
+                    "name": "expiration",
+                    "type": "time_point_sec"
+                }
+            ]
+        },
+        {
+            "name": "updatetally",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "vote",
+            "base": "",
+            "fields": [
+                {
+                    "name": "voter",
+                    "type": "name"
+                },
+                {
+                    "name": "proposal_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "vote_side",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "voteconfig",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "vote_yes",
+                    "type": "asset"
+                },
+                {
+                    "name": "vote_no",
+                    "type": "asset"
+                },
+                {
+                    "name": "total_votes",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "voter",
+            "base": "",
+            "fields": [
+                {
+                    "name": "voter",
+                    "type": "name"
+                },
+                {
+                    "name": "vote_side",
+                    "type": "uint8"
+                },
+                {
+                    "name": "vote",
+                    "type": "asset"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "cleanup",
+            "type": "cleanup",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "createprop",
+            "type": "createprop",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "feecheck",
+            "type": "feecheck",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "implement",
+            "type": "implement",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "lock",
+            "type": "lock",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "refund",
+            "type": "refund",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setconfig",
+            "type": "setconfig",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "unlock",
+            "type": "unlock",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "updatetally",
+            "type": "updatetally",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "vote",
+            "type": "vote",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "deposits",
+            "type": "deposits",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "locked",
+            "type": "staking",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "proposals",
+            "type": "prop_struct",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "setting",
+            "type": "settings",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "stat",
+            "type": "currency_stats",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "totallocked",
+            "type": "totalstake",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "unlocking",
+            "type": "unstaking",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "voters",
+            "type": "voter",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "votes",
+            "type": "voteconfig",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}

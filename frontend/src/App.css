@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #202047;
+    color: #FFFFFF;
+}
+
+.container90 {
+    width: 90%;
+    margin: auto;
+}
+
+.primaryButton {
+    background: #3131FF;
+    border: 1px solid #3131FF;
+    box-sizing: border-box;
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.primaryButton:hover, .primaryButton:active, .primaryButton:focus {
+    color: #FFFFFF;
+}
+
+.pt-15 {
+    padding-top: 15px;
+}
+
+.pt-25 {
+    padding-top: 25px;
+}
+
+.pt-35 {
+    padding-top: 35px;
+}
+
+.pt-45 {
+    padding-top: 45px;
+}
+
+.pt-55 {
+    padding-top: 55px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+.mt-35 {
+    margin-top: 35px;
+}
+
+.mt-45 {
+    margin-top: 45px;
+}
+
+.mt-55 {
+    margin-top: 55px;
+}
+
+.primaryInput {
+    border: 1px solid #e7e7e7;
+    box-sizing: border-box;
+    height: 54px;
+    background: #202047;
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: #F2F2F2 !important;
+
+}
+.pl55{
+    padding-left:55px ;
+}
+
+.primaryInput:hover, .primaryInput:active, .primaryInput:focus {
+    background: #202047;
+}
+
+.rectangleBox {
+    position: absolute;
+    width: 187.53px;
+    height: 162.53px;
+    left: 25px;
+    top: -6px;
+    opacity: 1;
+    border-radius: 10px;
+    transform: rotate(33.88deg);
+    background-repeat: no-repeat;
+}
+
+.rectangleBoxSmall {
+    position: absolute;
+    width: 91px;
+    height: 91px;
+    left: 32%;
+    top: 25px;
+    background-repeat: no-repeat;
+}
+
+.ellBoxSmall {
+    position: absolute;
+    width: 76px;
+    height: 59px;
+    left: 60%;
+    top: 0px;
+    background-repeat: no-repeat;
+}
+
+.ellBox {
+    position: absolute;
+    width: 139px;
+    height: 148px;
+    right: 0;
+    top: -12px;
+    background-repeat: no-repeat;
+}
+
+.rectBig {
+
+    position: absolute;
+    width: 168px;
+    height: 171px;
+    right: 13%;
+    top: 20%;
+    background-repeat: no-repeat;
+}
+
+.outlineBtn {
+    border: 1px solid #3131FF;
+    box-sizing: border-box;
+}
+
+.outlineBtn:hover {
+    color: white;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-backdrop.show {
+    opacity: 1 !important;
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, .8) !important;
+}
+
+.modalBlueBg .modal-content {
+    background: #202047;
+    box-shadow: 0px 16px 4px rgba(0, 0, 0, 0.08);
+}
+
+.modalBlueBg .modal-heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.modalBlueBg .close {
+    color: #FFFFFF;
+    opacity: 0.8;
+    font-size: 45px;
+}
+
+.mainHeadingModal {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.voteProposalModal .modal-body {
+    padding: 25px;
+}
+
+.voteBlock {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 55px;
+}
+
+.singleVoteBlock {
+    cursor: pointer;
+}
+
+.voteImageBlock img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.voteImageBlock.active {
+    border-radius: 50%;
+    border: 4px solid green;
+    max-height: 130px;
+    min-height: 130px;
+}
+
+.voteText {
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 45px;
+    margin-top: 25px;
+}
+
+.primaryButton {
+    background-position: center;
+    transition: background 0.8s;
+}
+
+.primaryButton:hover {
+    background: #3535d0 radial-gradient(circle, transparent 1%, #3535d9 1%) center/15000%;
+}
+
+.primaryButton:active {
+    background-color: #3131FF;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.connectTokenModalHeading {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.connectTokenBorder {
+    opacity: 1;
+    border: 1px solid #eae9e9;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px 25px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.connectTokenImg {
+    width: 59px;
+    height: 59px;
+    object-fit: contain;
+    margin-right: 25px;
+}
+
+.connectTokenName {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 31px;
+    color: #FFFFFF;
+    margin-bottom: 0;
+}
+
+.loaderConnect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 57px;
+    vertical-align: bottom;
+}
+
+
+.connectTokenModal .close {
+    opacity: 1;
+}
+
+.connectTokenModal .modal-body {
+    padding: 15px 35px 45px;
+}
+
+.createProposalText {
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #F2F2F2;
+}
+
+.btnDefaultBlue {
+    background: #3131FF;
+    border:1px solid #3131FF;;
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 15px 45px;
+}
+
+.btnDefaultBlue:hover {
+    color: #FFFFFF;
+}
+.errorInput{
+    font-size: 17px;
+    font-weight: 600;
+}
+.css-1jgv6z-ToastContainer{
+    z-index: 9999 !important;
+}
+
+
+@media only screen and (max-width: 575px) {
+    .container90 {
+        width: 100%;
+    }
+
+}
