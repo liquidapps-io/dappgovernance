@@ -1,0 +1,188 @@
+.packageListItem{
+    border: 1px solid #e7e7e7;
+    padding: 45px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+}
+.proposalNo{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: left;
+    color: #FFFFFF;
+    margin-bottom: 35px;
+}
+.proposalName{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+.proposalDesc{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    color: #FFFFFF;
+    opacity: 0.87;
+}
+.keyHeading{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+.keyValue{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+.proposalInfo{
+    display: flex;
+    margin: 45px 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.metaInfo{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.infoBlock{
+    padding-right: 25px;
+}
+.metaHeading{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+.blueText{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    color: #00EAEA;
+    text-shadow: 0px 7px 8px rgba(0, 0, 0, 0.25);
+    margin-left: 15px;
+}
+.navHeading{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 28px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.blueTextBold{
+    color: #00EAEA;
+}
+.leftIcon{
+    font-size: 25px;
+}
+.progress{
+    height: 0.3rem;
+}
+.progress-bar{
+    background-color: #00EAEA;
+}
+.proposalProgress{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.progressSingle{
+    width: 50%;
+}
+.timeValue,.timer{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #00EAEA;
+    text-shadow: 0px 7px 8px rgba(0, 0, 0, 0.25);
+}
+.timerMain{
+    margin-left: 25%;
+}
+
+.timerStartBlock {
+    display: flex;
+    margin-top: 15px;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ .timerSeprate {
+    font-style: normal;
+    font-weight: 600;
+     font-size: 18px;
+     line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+     color: #00EAEA;
+     text-shadow: 0px 7px 8px rgba(0, 0, 0, 0.25);
+}
+.timerSeprate {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.timerText{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 26px;
+}
+.btnBlock{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 75px;
+}
+.voteBtn{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 20px 85px;
+}
+
+@media only screen and (max-width: 575px) {
+    .timerMain{
+        margin-left: 0;
+    }
+}

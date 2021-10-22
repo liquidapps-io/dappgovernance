@@ -1,0 +1,34 @@
+.btnHeader{
+    padding: 15px 25px;
+}
+.connectBtn{
+    font-family: Rajdhani;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.connectBtn{
+    padding: 15px 45px;
+}
+.headerBlock{
+    padding: 45px 0;
+}
+@media only screen and (max-width: 575px) {
+    .headerLogo{
+        width: 150px;
+        margin-top: 5px;
+    }
+    .btnHeader{
+        padding: 8px 15px;
+    }
+    .headerBlock{
+        padding: 25px 0;
+    }
+}

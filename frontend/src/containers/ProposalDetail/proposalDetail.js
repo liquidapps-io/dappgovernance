@@ -1,7 +1,13 @@
 import {Fragment, useEffect, useState} from "react";
 import VoteProposal from "../../components/VoteProposal/VoteProposal";
 import {useHistory} from "react-router-dom";
-import {ContractNames, eosjsEndPoint, ProposerMetaTable, ProposerTable} from "../../utils/constants";
+import {
+    ContractNames,
+    eosjsEndPoint,
+    ProposerMetaTable,
+    ProposerSupplyTable,
+    ProposerTable
+} from "../../utils/constants";
 import EosApi from "eosjs-api";
 import '../../styles/proposalDetail.css'
 import {useDispatch} from "react-redux";
@@ -9,13 +15,16 @@ import WalletProvider from '../../utils/wallet'
 import {showVoteModal} from "../../redux/actions/ModalActions";
 import {useToasts} from "react-toast-notifications";
 import {generateError} from "../../utils/helpers";
+import Countdown from "react-countdown";
 
 const ProposalDetail = (props) => {
 
     const [tableData, setTableData] = useState({})
     const [metaData, setMetaData] = useState({})
+    const [totalSupply, setTotalSupply] = useState('')
     const [show, setShow] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [timerTime, setTimerTime] = useState(new Date())
 
     const history = useHistory()
 
@@ -32,6 +41,12 @@ const ProposalDetail = (props) => {
     }
 
     const eos = EosApi(options)
+
+    const totalPercentage = (yesVote = '', totalVote = '') => {
+        const yesVoteNumber = yesVote.replace('DAPP', '')
+        const totalVoteNumber = totalVote.replace('DAPP', '')
+        return ((yesVoteNumber * 100) / totalVoteNumber).toFixed(2)
+    }
 
     const getTableRows = async () => {
         try {
@@ -97,6 +112,28 @@ const ProposalDetail = (props) => {
         }
     }
 
+    const getTableRowsSupply = async () => {
+        try {
+            const tableRowsSupply = await eos.getTableRows({
+                code: ProposerSupplyTable.account,
+                table: ProposerSupplyTable.table,
+                scope: ProposerSupplyTable.scope,
+                json: 'true',
+                limit: 100
+            })
+
+            if (tableRowsSupply) {
+                console.log('supply', tableRowsSupply)
+                if (tableRowsSupply.rows.length > 0) {
+                    setTotalSupply(tableRowsSupply.rows[0].supply)
+                }
+            }
+
+        } catch (e) {
+            console.log('something went wrong in getting Proposal meta data', e)
+        }
+    }
+
     const goToBackPage = () => {
         history.push('/')
     }
@@ -105,8 +142,15 @@ const ProposalDetail = (props) => {
         dispatch(showVoteModal())
     }
 
+    const addDaysForTimer = (dateString, dayAdd) => {
+        const date = new Date(dateString); // Now
+        date.setDate(date.getDate() + dayAdd); // Set now + 30 days as the new date
+        const finalDate = new Date(date).toUTCString()
+        return new Date(finalDate).getTime()
+    }
+
     const handleUpdateTally = async () => {
-        const { id } = tableData
+        const {id} = tableData
         try {
             setLoading(true)
             const wallet = WalletProvider.getWallet()
@@ -141,18 +185,98 @@ const ProposalDetail = (props) => {
 
         } catch (e) {
             console.log('something went wrong ', e)
-            addToast( generateError(e,'Something went wrong'), {appearance: 'success', autoDismiss: true})
+            addToast(generateError(e, 'Something went wrong'), {appearance: 'success', autoDismiss: true})
 
         } finally {
             setLoading(false)
         }
     }
 
+    const renderer = ({total, days, hours, minutes, seconds, milliseconds, completed}) => {
+        if (completed) {
+            return (
+                <Fragment>
+                </Fragment>
+            )
+        } else {
+            // Render a countdown
+            return (
+                <Fragment>
+                    <h6 className="keyHeading">
+                        Time Left
+                    </h6>
+                    <ul className="timerStartBlock">
+                        <li>
+                            <span className="timer">
+                                {days}
+                                <span className="timerSeprate">:</span>
+                            </span>
+                            <span className="timerText">
+                                DAYS
+                            </span>
+                        </li>
+
+                        <li>
+                            <span className="timer">
+                                {hours}
+                                <span className="timerSeprate">:</span>
+                            </span>
+
+                            <span className="timerText">
+                                HOURS
+                            </span>
+                        </li>
+
+                        <li>
+                            <span className="timer">
+                                {minutes}
+                                <span className="timerSeprate">:</span>
+                            </span>
+
+                            <span className="timerText">
+                                MINUTES
+                            </span>
+                        </li>
+
+                        <li>
+                            <span className="timer">
+                                {seconds}
+                            </span>
+                            <span className="timerText">
+                                SECONDS
+                            </span>
+                        </li>
+                    </ul>
+                </Fragment>
+            );
+        }
+    };
+
     useEffect(() => {
+        console.log('use effect is going ot be called')
         getTableRows()
         getTableRowsMeta()
+        getTableRowsSupply()
 
     }, [])
+
+    useEffect(() => {
+        if (tableData) {
+            let finalTime = ''
+            if (tableData.status === 'Approved') {
+                finalTime = addDaysForTimer(tableData.approved_at, 2)
+            } else if (tableData.status === 'Created') {
+                finalTime = addDaysForTimer(tableData.created_at, 30)
+            } else if (tableData.status === 'Accepted') {
+                finalTime = addDaysForTimer(tableData.accepted_at, 3)
+            } else {
+                //when status is rejected
+                finalTime = addDaysForTimer(tableData.approved_at, 2)
+            }
+            console.log('final time', finalTime)
+            setTimerTime(finalTime)
+        }
+    }, [tableData])
 
 
     return (
@@ -209,6 +333,30 @@ const ProposalDetail = (props) => {
                                             Status
                                         </h6>
                                     </div>
+
+                                    {tableData.status === 'Rejected' &&
+                                    <div className="infoBlock">
+                                        <h2 className="keyValue">
+                                            {new Date(tableData.rejected_at).toUTCString()}
+                                        </h2>
+                                        <h6 className="keyHeading">
+                                            Rejected At
+                                        </h6>
+                                    </div>
+                                    }
+
+                                    {tableData.status === 'Approved' &&
+                                    <div className="infoBlock">
+                                        <h2 className="keyValue">
+                                            {new Date(tableData.approved_at).toUTCString()}
+                                        </h2>
+                                        <h6 className="keyHeading">
+                                            Approved At
+                                        </h6>
+                                    </div>
+                                    }
+
+
                                     <div className="infoBlock">
                                         <h2 className="keyValue">
                                             {tableData.proposer}
@@ -225,9 +373,10 @@ const ProposalDetail = (props) => {
                                         <h2 className="keyValue mb-4">
                                             Vote :
                                             <span className="blueText mr-3">
-                                            10%
-                                        </span>
-                                            ( Approved )
+
+                                                {totalPercentage(metaData.total_votes, totalSupply) + ' %'}
+                                            </span>
+                                            ( {tableData.status} )
                                         </h2>
                                         <div className="progress mb-3">
                                             <div className="progress-bar" role="progressbar" aria-valuenow="70"
@@ -242,53 +391,8 @@ const ProposalDetail = (props) => {
 
                                     <div className="progressSingle timerMain">
 
-                                        <ul className="timerStartBlock">
-                                            <li>
-                                                <span className="timer">
-                                                    25
-                                                    <span className="timerSeprate">:</span>
-                                                </span>
+                                        <Countdown date={timerTime} zeroPadDays={1} renderer={renderer}/>
 
-                                                <span className="timerText">
-                                                    DAYS
-                                                </span>
-                                            </li>
-
-                                            <li>
-                                                <span className="timer">
-                                                    25
-                                                    <span className="timerSeprate">:</span>
-                                                </span>
-
-                                                <span className="timerText">
-                                                    HOURS
-                                                </span>
-                                            </li>
-
-                                            <li>
-                                                <span className="timer">
-                                                    25
-                                                    <span className="timerSeprate">:</span>
-                                                </span>
-
-                                                <span className="timerText">
-                                                    MINUTES
-                                                </span>
-                                            </li>
-
-                                            <li>
-                                                <span className="timer">
-                                                    25
-                                                </span>
-                                                <span className="timerText">
-                                                    SECONDS
-                                                </span>
-                                            </li>
-                                        </ul>
-
-                                        <h6 className="keyHeading">
-                                            Time Left
-                                        </h6>
 
                                     </div>
 
@@ -328,7 +432,7 @@ const ProposalDetail = (props) => {
                                         <h2 className="keyValue">
                                             {metaData.vote_yes}
                                             <span className="blueText">
-                                            ( 10% )
+                                            ( {totalPercentage(metaData.vote_yes, metaData.total_votes)} % )
                                             </span>
                                         </h2>
                                         <h6 className="keyHeading">
@@ -339,7 +443,7 @@ const ProposalDetail = (props) => {
                                         <h2 className="keyValue">
                                             {metaData.vote_no}
                                             <span className="blueText">
-                                            ( 10% )
+                                            ( {totalPercentage(metaData.vote_no, metaData.total_votes)} % )
                                             </span>
                                         </h2>
                                         <h6 className="keyHeading">
@@ -355,7 +459,7 @@ const ProposalDetail = (props) => {
                 </div>
             </div>
 
-            <VoteProposal/>
+            <VoteProposal proposalId={proposalId}/>
 
         </Fragment>
     )

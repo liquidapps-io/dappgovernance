@@ -57,13 +57,14 @@ const ProposalLists = () => {
                 table: ProposerTable.table,
                 scope: ProposerTable.scope,
                 json: 'true',
-                limit: 100
+                limit: 100,
+
             })
 
-            console.log('table rows called', tableRows)
             if (tableRows) {
-                console.log(tableRows.rows)
-                setProposalLists(tableRows.rows)
+                const reverse = [...tableRows.rows].reverse()
+                console.log("table rows",tableRows.rows,"reverse order",reverse);
+                setProposalLists(reverse)
             }
             setLoading(false)
 
