@@ -1,0 +1,17 @@
+{
+    "name": "governance-proposal-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Natanael Prudhomme",
+    "license": "ISC",
+    "dependencies": {
+      "eosjs": "^21.0.3",
+      "node-fetch": "^2.6.1",
+      "node-telegram-bot-api": "^0.51.0"
+    }
+  }
+  

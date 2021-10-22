@@ -348,5 +348,21 @@ body {
     .container90 {
         width: 100%;
     }
-
+    .lngBtn{
+        display: none;
+    }
+    .progressSingle{
+        width: 100% !important;
+    }
+    .voteBtn{
+        width: 100%;
+        justify-content: center;
+    }
+    .outlineBtn{
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+    }
+    .keyHeading{
+        margin-bottom: 25px;
+    }
 }

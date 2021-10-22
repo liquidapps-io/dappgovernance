@@ -2,7 +2,7 @@ import {Fragment, useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import WalletProvider from "../../utils/wallet";
 import {GetVoteStatus, VoteTable} from "../../utils/constants";
-import {hideVoteModal} from "../../redux/actions/ModalActions";
+import {hideVoteModal, showConnectModal} from "../../redux/actions/ModalActions";
 import Loader from "react-loader-spinner";
 import {useToasts} from "react-toast-notifications";
 import {generateError} from "../../utils/helpers";
@@ -18,13 +18,14 @@ const VoteProposal = (props) => {
     const [activeIndex, setActiveIndex] = useState(3) // 0 ,1 ,2 is in use
 
     const handleVoteClick = async (voteSide) => {
-
         try {
+            console.log('vote clicked')
             setVoteIndex(voteSide)
             setVoteLoading(true)
             const wallet = WalletProvider.getWallet()
 
             if (!!wallet) {
+
                 const response = await wallet.eosApi.transact({
                         actions: [
                             {
@@ -52,6 +53,9 @@ const VoteProposal = (props) => {
 
                 addToast('Vote Successful', {appearance: 'success', autoDismiss: true})
                 getVoteCondition() // calling change of get vote conditions
+            } else {
+                dispatch(hideVoteModal())
+                dispatch(showConnectModal())
             }
         } catch (e) {
             console.log('something went wrong ', e)

@@ -42,7 +42,7 @@ const Header = () => {
                 <div className="container90">
                     <div className="col-md-12">
                         <div className="row d-flex flex-row headerBlock">
-                            <div className="">
+                            <div className="lngBtn">
                                 <button className="btn primaryButton btnHeader">
                                     <i className="fa fa-globe pr-2"/> English
                                 </button>
