@@ -16,12 +16,12 @@ const actions = [
         name: "transfer",
         authorization: [
             {
-                actor: "dappgovernor",
+                actor: "dappgovfunds",
                 permission: "owner"
             }
         ],
         data: {
-            from: "dappgovernor",
+            from: "dappgovfunds",
             to: config.to,
             quantity: config.quantity,
             memo: config.memo
