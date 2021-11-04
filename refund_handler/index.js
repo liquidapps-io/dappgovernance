@@ -111,14 +111,23 @@ const handleDeltas = async (deltas) => {
     }
 }
 
+const handleExistingEntries = async () => {
+    for(const el of refunds) {
+        if(el.date < new Date()) {
+            await handleRefund(refund);
+        }
+    }
+}
+
 const fetchProposals = async () => {
+    await handleExistingEntries();
     let res = await fetch(`${hyperion_endpoint}/v2/history/get_deltas?code=${code}&table=${table}&present=true`);
     try {
         await handleDeltas((await res.json()).deltas);
     } catch (e) {
         console.log(e);
     }
-    console.log(JSON.stringify(refunds))
+    console.log(JSON.stringify(refunds));
 };
 
 (() => {
