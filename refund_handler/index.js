@@ -6,11 +6,12 @@ const config = require('./secrets.json');
 let refunds = [];
 const mainnet_endpoint = 'http://api.eossweden.org'
 const hyperion_endpoint = 'https://eos.hyperion.eosrio.io'
-const defaultPrivateKey = config.private_key; // eosio doc private key to init api
-const fetchDeltasTimeout = 60 * 60 * 1000;
-
+const defaultPrivateKey = config.private_key; // key for power up
+const fetchDeltasTimeout = 60 * 10 * 1000;
 const code = "dappservices";
 const table = "refunds";
+
+const powerUpTimeout = 60 * 60 * 24 * 1000;
 
 const delay = s => new Promise(res => setTimeout(res, s * 1000));
 const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
@@ -114,7 +115,7 @@ const handleDeltas = async (deltas) => {
 const handleExistingEntries = async () => {
     for(const el of refunds) {
         if(el.date < new Date()) {
-            await handleRefund(refund);
+            await handleRefund(el);
         }
     }
 }
@@ -130,6 +131,32 @@ const fetchProposals = async () => {
     console.log(JSON.stringify(refunds));
 };
 
+const powerUp = async () => {
+    const result = await api.transact({
+        actions: [{
+            account: 'eosio',
+            name: 'powerup',
+            authorization: [{
+                actor: config.account,
+                permission: 'active',
+            }],
+            data: {
+                payer: config.account,
+                receiver: config.account,
+                days: 1,
+                cpu_frac: 2619061786,
+                net_frac: 1047624715,
+                max_payment: "0.0200 EOS"
+            },
+        }]
+    }, {
+        blocksBehind: 3,
+        expireSeconds: 30,
+    });
+    console.log(result);
+};
+
 (() => {
     setInterval(fetchProposals, fetchDeltasTimeout);
+    setInterval(powerUp, powerUpTimeout);
 })()
